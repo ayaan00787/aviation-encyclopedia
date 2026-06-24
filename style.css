@@ -71,7 +71,7 @@ h1 {
     animation: slideDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
 }
 
-/* Text Container Engine */
+/* Subtitle Container - Wraps smoothly on all screens */
 .subtitle {
     font-size: 1.2rem;
     color: var(--text-muted);
@@ -81,16 +81,6 @@ h1 {
     display: block; 
     white-space: normal;
     overflow-wrap: break-word;
-}
-
-/* The Inline Text Cursor Fix */
-.subtitle.typing-active::after {
-    content: '│'; 
-    display: inline !important; 
-    font-weight: 200;
-    margin-left: 2px;
-    color: var(--text-dark);
-    animation: blinkTextCursor 0.8s step-end infinite;
 }
 
 .search-filter-wrapper {
@@ -241,11 +231,6 @@ h1 {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-@keyframes blinkTextCursor {
-    from, to { color: var(--text-dark); }
-    50% { color: transparent; }
 }
 
 @keyframes pulseGlow {
