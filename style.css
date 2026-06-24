@@ -19,7 +19,7 @@ body {
     background-color: var(--bg-main);
     color: var(--text-dark);
     min-height: 100vh;
-    overflow-x: hidden; /* Prevents awkward side-scrolling on mobile */
+    overflow-x: hidden;
 }
 
 /* Header Elements */
@@ -71,25 +71,26 @@ h1 {
     animation: slideDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
 }
 
+/* Text Container Engine */
 .subtitle {
     font-size: 1.2rem;
     color: var(--text-muted);
     margin-bottom: 30px;
     line-height: 1.5;
     min-height: 3rem;
-    display: inline-block;
-    position: relative; 
+    display: block; 
+    white-space: normal;
+    overflow-wrap: break-word;
 }
 
+/* The Inline Text Cursor Fix */
 .subtitle.typing-active::after {
-    content: '';
-    position: absolute;
-    right: -8px;
-    top: 6px; 
-    height: 1.1rem; 
-    width: 2px;
-    background-color: var(--text-dark);
-    animation: blinkCaret 0.8s step-end infinite;
+    content: '│'; 
+    display: inline !important; 
+    font-weight: 200;
+    margin-left: 2px;
+    color: var(--text-dark);
+    animation: blinkTextCursor 0.8s step-end infinite;
 }
 
 .search-filter-wrapper {
@@ -242,9 +243,9 @@ h1 {
     }
 }
 
-@keyframes blinkCaret {
-    from, to { opacity: 1; }
-    50% { opacity: 0; }
+@keyframes blinkTextCursor {
+    from, to { color: var(--text-dark); }
+    50% { color: transparent; }
 }
 
 @keyframes pulseGlow {
@@ -253,11 +254,10 @@ h1 {
 }
 
 /* ========================================================= */
-/* 📱 MOBILE RESPONSIVE OVERRIDES              */
+/* 📱 MOBILE RESPONSIVE OVERRIDES                            */
 /* ========================================================= */
 
 @media screen and (max-width: 768px) {
-    /* Compress giant title formatting */
     h1 {
         font-size: 2.0rem !important;
         white-space: normal !important;
@@ -278,7 +278,6 @@ h1 {
         border-radius: 20px;
     }
 
-    /* Stack inputs cleanly down the layout screen center */
     .search-filter-wrapper {
         flex-direction: column;
         gap: 12px;
@@ -289,7 +288,6 @@ h1 {
         width: 100% !important;
     }
 
-    /* Force database grid straight down into a 1-column responsive layout */
     .cards-grid {
         grid-template-columns: 1fr !important; 
         padding: 0 16px 40px;
