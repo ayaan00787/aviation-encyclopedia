@@ -1,0 +1,252 @@
+:root {
+    --bg-main: #f5f5f7;
+    --card-bg: #ffffff;
+    --text-dark: #1d1d1f;
+    --text-muted: #86868b;
+    --accent: #0071e3;
+    --border-color: #e5e5ea;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+/* Header Elements */
+.apple-header {
+    position: relative;
+    text-align: center;
+    padding: 60px 20px 40px;
+    overflow: hidden;
+}
+
+.header-glow {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 113, 227, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: 1;
+    pointer-events: none;
+    animation: pulseGlow 5s ease-in-out infinite alternate;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(209, 209, 214, 0.85); 
+    backdrop-filter: blur(25px); 
+    -webkit-backdrop-filter: blur(25px);
+    padding: 40px;
+    border-radius: 28px; 
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); 
+    border: 1px solid rgba(255, 255, 255, 0.9); 
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    opacity: 0; 
+    transform: translateY(-30px); 
+    animation: slideDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    line-height: 1.5;
+    min-height: 3rem;
+    display: inline-block;
+    position: relative; 
+}
+
+.subtitle.typing-active::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 6px; 
+    height: 1.1rem; 
+    width: 2px;
+    background-color: var(--text-dark);
+    animation: blinkCaret 0.8s step-end infinite;
+}
+
+.search-filter-wrapper {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+#search-input, #category-filter {
+    padding: 16px 20px;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+    outline: none;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+}
+
+#search-input { flex: 1; }
+
+#category-filter {
+    width: 200px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2386868b%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+#search-input:focus, #category-filter:focus {
+    border-color: var(--accent);
+    box-shadow: 0 6px 20px rgba(0, 113, 227, 0.12);
+}
+
+/* Cards Grid Layout */
+.cards-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+    padding: 0 30px 60px;
+}
+
+.aircraft-card {
+    background-color: var(--card-bg);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.aircraft-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+}
+
+.card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-header {
+    margin-bottom: 20px;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.badge.commercial { color: #0071e3; background-color: rgba(0, 113, 227, 0.1); }
+.badge.cargo { color: #ff9500; background-color: rgba(255, 149, 0, 0.1); }
+.badge.general { color: #34c759; background-color: rgba(52, 199, 89, 0.1); }
+
+.card-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.01em;
+}
+
+.card-manufacturer {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin: 0;
+}
+
+.data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 12px;
+    margin-bottom: 24px;
+    background-color: #fafafa;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.data-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.data-item span {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 3px;
+}
+
+.card-note {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+    font-style: italic;
+}
+
+/* Animations Keyframes */
+@keyframes slideDown {
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blinkCaret {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes pulseGlow {
+    0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.6; }
+    100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+}
