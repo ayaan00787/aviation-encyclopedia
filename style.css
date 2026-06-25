@@ -59,19 +59,41 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.9); 
 }
 
+/* Main Heading Title */
 h1 {
     font-family: 'Poppins', sans-serif;
     font-size: 3.2rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
+    font-weight: 800; 
+    letter-spacing: -0.03em; 
     margin-bottom: 15px;
     color: var(--text-dark);
     opacity: 0; 
     transform: translateY(-30px); 
     animation: slideDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), text-shadow 0.4s ease;
 }
 
-/* Subtitle Container - Wraps smoothly on all screens */
+/* Premium Heading Hover Effect */
+h1:hover {
+    transform: scale(1.02);
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    cursor: default;
+}
+
+/* ✨ The New Navy Blue Handwriting Accent */
+.handwriting-accent {
+    font-family: 'Dancing Script', cursive;
+    color: #002244; 
+    font-size: 4.0rem; 
+    font-weight: 700;
+    letter-spacing: normal; 
+    display: inline-block;
+    transform: rotate(-2deg); 
+    margin-left: 5px;
+    text-shadow: 1px 2px 4px rgba(0, 34, 68, 0.15);
+}
+
+/* Subtitle Container - No Cursor, Pure Text Wrap */
 .subtitle {
     font-size: 1.2rem;
     color: var(--text-muted);
@@ -83,6 +105,7 @@ h1 {
     overflow-wrap: break-word;
 }
 
+/* Search and Filter Inputs */
 .search-filter-wrapper {
     display: flex;
     gap: 16px;
@@ -101,7 +124,7 @@ h1 {
     color: var(--text-dark);
     outline: none;
     box-shadow: 0 4px 14px rgba(0,0,0,0.03);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 #search-input { flex: 1; min-width: 0; }
@@ -116,7 +139,15 @@ h1 {
     padding-right: 40px;
 }
 
+/* Search & Filter Hover Lift Effect */
+#search-input:hover, #category-filter:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    border-color: #d1d1d6;
+}
+
 #search-input:focus, #category-filter:focus {
+    transform: translateY(-2px); 
     border-color: var(--accent);
     box-shadow: 0 6px 20px rgba(0, 113, 227, 0.12);
 }
@@ -172,6 +203,8 @@ h1 {
 .badge.commercial { color: #0071e3; background-color: rgba(0, 113, 227, 0.1); }
 .badge.cargo { color: #ff9500; background-color: rgba(255, 149, 0, 0.1); }
 .badge.general { color: #34c759; background-color: rgba(52, 199, 89, 0.1); }
+/* Added Military Badge */
+.badge.military { color: #d32f2f; background-color: rgba(211, 47, 47, 0.1); } 
 
 .card-title {
     font-family: 'Poppins', sans-serif;
@@ -244,9 +277,13 @@ h1 {
 
 @media screen and (max-width: 768px) {
     h1 {
-        font-size: 2.0rem !important;
+        font-size: 2.2rem !important;
         white-space: normal !important;
         overflow-wrap: break-word !important;
+    }
+
+    .handwriting-accent {
+        font-size: 2.6rem; 
     }
 
     .subtitle {

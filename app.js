@@ -28,7 +28,7 @@ function initTypewriter() {
     subtitle.classList.add('typing-active'); 
 
     let index = 0;
-    const speed = 40; 
+    const speed = 25; // Sped up slightly for a better UX with longer text
 
     function typeWriterEngine() {
         if (index < originalText.length) {
