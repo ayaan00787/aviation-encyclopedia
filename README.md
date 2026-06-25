@@ -1,4 +1,4 @@
-Aircraft Explorer
+**Aircraft Explorer**
 
 A modern, searchable aviation encyclopedia featuring structured aircraft specifications and technical data.
 
